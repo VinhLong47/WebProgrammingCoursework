@@ -5,6 +5,7 @@ import WordNew from './views/WordNew.vue';
 import WordShow from './views/WordShow.vue';
 import WordEdit from './views/WordEdit.vue';
 import WordTest from './views/WordTest.vue';
+import WordAbout from './views/WordAbout.vue';
 
 Vue.use(Router);
 export default new Router({
@@ -38,8 +39,13 @@ export default new Router({
         },
         {
             path: '/test',
-            name: 'test',
+            name: 'word-test',
             component: WordTest
+        },
+        {
+            path: '/about',
+            name: 'word-about',
+            component: WordAbout
         },
     ]
 })
