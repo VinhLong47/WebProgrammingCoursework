@@ -1,7 +1,7 @@
 <template>
     <div>
         
-        <h1>Words</h1>
+        <h1>Words List</h1>
         
         <table id="words" class="ui celled compact table">
             <thead>
