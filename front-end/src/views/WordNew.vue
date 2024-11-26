@@ -18,7 +18,7 @@ export default {
         async createOrUpdate(word) {
             try {
                 const res = await api.createWord(word);
-                this.flash('Word Created!', 'success');  // Assuming `flash` is available globally
+                this.flash('Word Created!', 'success'); 
                 this.$router.push(`/words/${res._id || res.data._id}`);  // Adjust to use `res.data._id` if needed
             } catch (error) {
                 console.error("Error creating word:", error);

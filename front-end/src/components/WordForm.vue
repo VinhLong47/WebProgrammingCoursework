@@ -1,6 +1,6 @@
 <template>
   <form action="#" @submit.prevent="onSubmit">
-    <p v-if="errorsPresent" class="error">Please fill out both fields!</p>
+    <p v-if="errorsPresent" class="error">Please fill out all off the fields!</p>
 
     <div class="ui labeled input fluid">
       <div class="ui label">
@@ -16,6 +16,13 @@
       <input type="text" placeholder="Enter word..." v-model="localWord.english" />
     </div>
 
+    <div class="ui labeled input fluid">
+      <div class="ui label">
+        <i class="spain flag"></i> Spanish
+      </div>
+      <input type="text" placeholder="Enter word..." v-model="localWord.spanish" />
+    </div>
+
     <button class="positive ui button">Submit</button>
   </form>
 </template>
@@ -29,7 +36,8 @@ export default {
       required: false,
       default: () => ({
         english: '',
-        german: ''
+        german: '',
+        spanish: ''
       })
     }
   },
@@ -50,7 +58,7 @@ export default {
   methods: {
     onSubmit() {
       // Check for errors before submitting
-      if (!this.localWord.german || !this.localWord.english) {
+      if (!this.localWord.german || !this.localWord.english || !this.localWord.spanish) {
         this.errorsPresent = true;
       } else {
         this.errorsPresent = false;

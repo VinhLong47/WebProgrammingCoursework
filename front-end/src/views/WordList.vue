@@ -1,25 +1,30 @@
 <template>
     <div>
+        
         <h1>Words</h1>
+        
         <table id="words" class="ui celled compact table">
             <thead>
                 <tr>
-                    <th>English</th>
-                    <th>German</th>
+                    <th><i class="germany flag"></i>German</th>
+                    <th><i class="united kingdom flag"></i>English</th>
+                    <th><i class="spain flag"></i>Spanish</th>
                     <th colspan="3"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="word in words" :key="word._id">
-                    <td>{{ word.english }}</td>
                     <td>{{ word.german }}</td>
-                    <td width="75" class="center aligned">
+                    <td>{{ word.english }}</td>
+                    <td>{{ word.spanish }}</td>
+
+                    <td width="70" class="center aligned">
                         <router-link :to="{ name: 'word-show', params: { id: word._id }}">Show</router-link>
                     </td>
-                    <td width="75" class="center aligned">
+                    <td width="70" class="center aligned">
                         <router-link :to="{ name: 'word-edit', params: { id: word._id }}">Edit</router-link>
                     </td>
-                    <td width="75" class="center aligned">
+                    <td width="70" class="center aligned">
                         <a href="#" @click.prevent="onDestroy(word._id)">Destroy</a>
                     </td>
                 </tr>

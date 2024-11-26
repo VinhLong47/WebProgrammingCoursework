@@ -40,4 +40,10 @@ export const api = {
         const res = await axios.put(baseURL + payload._id, payload);
         return res.data;
     }),
+
+    // Search word method
+    searchWords: handleError(async query => { 
+        const res = await axios.get(baseURL, { params: { search: query } });
+        return res.data;
+    }),
 };

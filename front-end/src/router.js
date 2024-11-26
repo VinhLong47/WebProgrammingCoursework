@@ -6,6 +6,7 @@ import WordShow from './views/WordShow.vue';
 import WordEdit from './views/WordEdit.vue';
 import WordTest from './views/WordTest.vue';
 import WordAbout from './views/WordAbout.vue';
+import WordSearch from './views/WordSearch.vue';
 
 Vue.use(Router);
 export default new Router({
@@ -47,5 +48,10 @@ export default new Router({
             name: 'word-about',
             component: WordAbout
         },
+        {
+            path: '/search',
+            name: 'word-search',
+            component: WordSearch
+        }
     ]
 })
