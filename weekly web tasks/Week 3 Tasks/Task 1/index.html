@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+</head>
+<body>
+    <!--Task 1: Add a description to your data object.
+    Then use an expression to display the description beneath the h1 -->
+    <div id="app">
+        <h2>{{ product }}</h2>
+        <p>{{ description }}</p>
+    </div>
+
+
+
+    <div class="nav-bar"></div>
+
+        <div id="app">
+        
+        <div class="product">
+            <div class="product-image">
+            <img v-bind:src="image" v-bind:alt="A pair of socks"/>
+            </div>
+
+            <div class="product-info">
+            <h1>{{ product }}</h1>
+            <a :href="link" target="_blank">More products like this</a>
+            </div>
+            
+        </div>
+        
+    </div> 
+    <script src="main.js"></script>
+</body>
+</html>

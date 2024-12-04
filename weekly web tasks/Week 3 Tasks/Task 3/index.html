@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>pm76-week3-task1</title>
+    <!-- Import Styles -->
+    <link rel="stylesheet" href="assets/styles.css" />
+    <!-- Import Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>  
+  </head>
+  <body>
+    <!--Task 3-->
+    <div class="nav-bar"></div>
+    <div id="app">
+      <div class="product">
+        <div class="product-image">
+          <img :src="image" :alt="altText"/>
+        </div>
+
+        <div class="product-info">
+          <h1>{{ product }}</h1>
+          <P>{{ description }}</P>
+          <p v-show="inStock">In Stock</p>
+          <span v-if="onSale">On Sale!</span>
+      </div>
+    </div> 
+
+    <!-- Import Js -->
+    <script src="main.js"></script>
+  </body>
+</html>
