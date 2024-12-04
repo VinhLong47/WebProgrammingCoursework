@@ -8,14 +8,15 @@ import WordTest from './views/WordTest.vue';
 import WordAbout from './views/WordAbout.vue';
 import WordSearch from './views/WordSearch.vue';
 
-Vue.use(Router);
-export default new Router({
+Vue.use(Router); // use Vue Router for Vue.js  
+
+export default new Router({ // create router
     mode: 'history',
     base: process.env.BASE_URL,
     linkActiveClass: 'active',
     routes: [
         {
-            path: '/',
+            path: '/', // default path
             redirect: '/words'
         },
         {

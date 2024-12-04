@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if = "this.word != ''">
         <h1>Edit Word</h1>
         <word-form @createOrUpdate="createOrUpdate" :word="this.word"></word-form>
     </div>
@@ -14,9 +14,9 @@
         components: {
             'word-form': WordForm
         },
-        data() {
+        data: function() {
             return {
-                word: {}
+                word: []
             };
         },
         async mounted() {

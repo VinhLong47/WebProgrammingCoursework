@@ -18,8 +18,8 @@ export default {
         async createOrUpdate(word) {
             try {
                 const res = await api.createWord(word);
-                this.flash('Word Created!', 'success'); 
-                this.$router.push(`/words/${res._id || res.data._id}`);  // Adjust to use `res.data._id` if needed
+                this.flash('Word Created!', 'success');
+                this.$router.push(`/words/${res._id}`);
             } catch (error) {
                 console.error("Error creating word:", error);
             }

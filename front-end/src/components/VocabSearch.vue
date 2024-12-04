@@ -1,39 +1,42 @@
 <template>
     <div>
+
+      <!--Search bar-->
       <div class="ui fluid icon input">
-        <input type="text" placeholder="Search word..." 
-          v-model="searchQuery"
-        />
+        <input type="text" placeholder="Search word..." v-model="searchQuery"/>
         <i class="search icon"></i>
       </div>
   
+      <!--Language filters-->
       <div class="ui buttons">
-        <button class="ui button" 
-          @click="filterByLanguage('all')">All</button>
-        <button class="ui button" 
-          @click="filterByLanguage('german')">German</button>
-        <button class="ui button" 
-          @click="filterByLanguage('english')">English</button>
-        <button class="ui button" 
-          @click="filterByLanguage('spanish')">Spanish</button>
+        <button class="ui button" @click="filterByLanguage('all')">All</button>
+        <button class="ui button" @click="filterByLanguage('german')">German</button>
+        <button class="ui button" @click="filterByLanguage('english')">English</button>
+        <button class="ui button" @click="filterByLanguage('spanish')">Spanish</button>
       </div>
-      <br><br>
+      <br>
+      <br>
+
+      <!--Display selected language-->
       <div>
-        <h2>Search Filter: {{ language }}</h2>
+        <h2>Language Filter: {{ language }}</h2>
       </div>
+
+      <!--Search result table-->
       <table id="words" class="ui celled compact table">
         <thead>
           <tr>
-            <th><i class="germany flag"></i>German</th>
-            <th><i class="united kingdom flag"></i>English</th>
-            <th><i class="spain flag"></i>Spanish</th>
+            <th v-if="language === 'all' || language === 'german'"><i class="germany flag"></i>German</th>
+            <th v-if="language === 'all' || language === 'english'"><i class="united kingdom flag"></i>English</th>
+            <th v-if="language === 'all' || language === 'spanish'"><i class="spain flag"></i>Spanish</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="word in filteredWords" :key="word._id">
-            <td>{{ word.german }}</td>
-            <td>{{ word.english }}</td>
-            <td>{{ word.spanish }}</td>
+          <!--Display list word for words in the filtered list-->
+          <tr v-for="word in filteredWords" :key="word._id"> 
+            <td v-if="language === 'all' || language === 'german'">{{ word.german }}</td>
+            <td v-if="language === 'all' || language === 'english'">{{ word.english }}</td>
+            <td v-if="language === 'all' || language === 'spanish'">{{ word.spanish }}</td>
           </tr>
         </tbody>
       </table>
@@ -49,34 +52,30 @@
       return {
         words: [],
         searchQuery: "", 
-        language: "", 
+        language: "all", 
       };
     },
     computed: {
       // Filter words based on search query and selected language
       filteredWords() {
-        const query = this.searchQuery.toLowerCase();
+        const query = this.searchQuery.toLowerCase().trim(); // get word from the search query
         
-        return this.words.filter(word => {
-
+        return this.words.filter(word => {  // compare the word list with search query
         if (this.language !=="all") {
-            const matchesSearchQuery = word[this.language].toLowerCase().includes(query)
-            return matchesSearchQuery && word[this.language] && word[this.language].toLowerCase().includes(query);
+            return word[this.language].toLowerCase().includes(query); // return words that matches search query
           }
         else {
-            const matchesSearchQuery = 
-            word.german.toLowerCase().includes(query) ||
-            word.english.toLowerCase().includes(query) ||
-            word.spanish.toLowerCase().includes(query);
-
-            return matchesSearchQuery;
+          return word.german.toLowerCase().includes(query) ||
+                word.english.toLowerCase().includes(query) ||
+                word.spanish.toLowerCase().includes(query);
           }
         });
       }
     },
     methods: {
-    filterByLanguage(language) {
-        this.language = language;
+    filterByLanguage(language) { // get language based on the filter selection
+      // set language
+        this.language = language; 
       },
     },
 

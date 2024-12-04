@@ -33,7 +33,6 @@ export default {
   props: {
     word: {
       type: Object,
-      required: false,
       default: () => ({
         english: '',
         german: '',
@@ -43,26 +42,22 @@ export default {
   },
   data() {
     return {
-      localWord: { ...this.word }, // Create a local copy of the word prop
+      localWord: { ...this.word }, 
       errorsPresent: false
     };
   },
-  watch: {
-    word: {
-      handler(newWord) {
-        this.localWord = { ...newWord }; // Update localWord if the prop changes
-      },
-      deep: true
-    }
-  },
   methods: {
-    onSubmit() {
-      // Check for errors before submitting
-      if (!this.localWord.german || !this.localWord.english || !this.localWord.spanish) {
-        this.errorsPresent = true;
+    onSubmit() {// Submit button clicked
+      // trim the words before emit
+      this.localWord.german = this.localWord.german.trim();
+      this.localWord.english = this.localWord.english.trim();
+      this.localWord.spanish = this.localWord.spanish.trim();
+
+      if (!this.localWord.german || !this.localWord.english || !this.localWord.spanish) { // if words are not in fields
+        this.errorsPresent = true; 
       } else {
         this.errorsPresent = false;
-        this.$emit('createOrUpdate', this.localWord); // Emit localWord with user input
+        this.$emit('createOrUpdate', this.localWord); // emit the words to api
       }
     }
   }

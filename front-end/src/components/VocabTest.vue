@@ -12,17 +12,19 @@
 
         <div class="ui labeled input fluid">
           <div class="ui label">
+            <i class="spain flag"></i> Spanish
+          </div>
+          <input type="text" readonly :disabled="testOver" :value="currWord.spanish"/>
+        </div>
+
+        <div class="ui labeled input fluid">
+          <div class="ui label">
             <i class="united kingdom flag"></i> English
           </div>
           <input type="text" placeholder="Enter word..." v-model="english" :disabled="testOver" autocomplete="off" />
         </div>
 
-        <div class="ui labeled input fluid">
-          <div class="ui label">
-            <i class="spain flag"></i> Spanish
-          </div>
-          <input type="text" placeholder="Enter word..." v-model="spanish" :disabled="testOver" autocomplete="off" />
-        </div>
+
   
         <button class="positive ui button" :disabled="testOver">Submit</button>
       </form>
@@ -49,7 +51,6 @@
         result: '',
         resultClass: '',
         english: '',
-        spanish: '',
         score: 0,
         testOver: false
       };
@@ -61,7 +62,7 @@
     },
     methods: {
       onSubmit: function() {
-        if (this.english === this.currWord.english && this.spanish === this.currWord.spanish) {
+        if (this.english.toLowerCase().trim() === this.currWord.english.toLowerCase()) {
           this.flash('Correct!', 'success', { timeout: 1000 });
           this.score += 1;
         } else {
@@ -70,7 +71,6 @@
         }
   
         this.english = '';
-        this.spanish = '';
         this.randWords.shift();
   
         if (this.randWords.length === 0) {

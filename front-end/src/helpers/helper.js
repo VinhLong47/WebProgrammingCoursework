@@ -14,11 +14,14 @@ const vm = new Vue();
 
 const baseURL = 'http://localhost:3000/words/';
 
+// warpper function for handling response error
 const handleError = fn => (...params) => 
     fn(...params).catch(error => {
         vm.flash(`${error.response.status}: ${error.response.statusText}`, 'error');
     });
 
+
+// api object for handling http request 
 export const api = {
     getWord: handleError(async id => {
         const res = await axios.get(baseURL + id);

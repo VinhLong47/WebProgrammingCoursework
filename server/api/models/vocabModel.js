@@ -1,3 +1,4 @@
+// Define Db Schemas
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
@@ -6,16 +7,18 @@ const VocabSchema = new Schema(
     {
         english: {
             type: String,
-            require: 'English word cannot be blank'
+            required: 'English word cannot be blank'
         },
 
         german: {
             type: String,
-            require: 'German word cannot be blank'
+            required: 'German word cannot be blank'
         },
+
+        // Adding new language model 
         spanish: {
             type: String,
-            require: 'Spanish word cannot be blank'
+            required: 'Spanish word cannot be blank'
         }
     },
     { collection: 'vocab' }

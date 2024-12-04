@@ -49,7 +49,7 @@
                 if (!sure) return;
                 await api.deleteWord(id);
                 this.flash('Word deleted successfully!', 'success'); 
-                this.words = this.words.filter(word => word._id !== id);
+                this.words = this.words.filter(word => word._id !== id); // update the word list by filter out the deleted word
             }
         },
         async mounted() {

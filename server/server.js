@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors');
+const cors = require('cors'); // middleware to handle request for different orgins
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 global.Vocab = require('./api/models/vocabModel');
@@ -11,15 +11,18 @@ mongoose.connect('mongodb+srv://longdvgcs220434:daovinhlong@web2cluster.6tftv.mo
 );
 
 const port = process.env.PORT || 3000;
-const app = express()
 
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+const app = express() // Create express app instance
 
-routes(app);
+app.use(cors()); // Allow Api to be access by different origins
+app.use(bodyParser.urlencoded({ extended: true }));  // handle url data
+app.use(bodyParser.json()); // handle json data
+
+routes(app); // establish routes for app
+
 app.listen(port);
-app.use((req, res) => {
+
+app.use((req, res) => { // handle url error
     res.status(404).send({ url: `${req.originalUrl} not found`});
 });
 

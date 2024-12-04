@@ -6,7 +6,7 @@ import 'semantic-ui-css/semantic.css'
 
 Vue.config.productionTip = false
 
-new Vue({
-  router,
-  render: h => h(App),
+new Vue({ // create app vue instance
+  router, // use router for the app
+  render: h => h(App), // render app view
 }).$mount('#app')

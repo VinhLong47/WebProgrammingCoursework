@@ -1,3 +1,5 @@
+// Handles Api logic for CRUD
+
 const mongoose = require('mongoose');
 const Vocab = mongoose.model('Vocab');
 
