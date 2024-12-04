@@ -46,7 +46,7 @@
     },
     data() {
       return {
-        randWords: JSON.parse(JSON.stringify(this.word)).sort(() => 0.5 - Math.random()),
+        randWords: JSON.parse(JSON.stringify(this.word)).sort(() => 0.5 - Math.random()), //.
         incorrectGuesses: [],
         result: '',
         resultClass: '',
