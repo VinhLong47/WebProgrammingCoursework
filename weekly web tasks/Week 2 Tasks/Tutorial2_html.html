@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="text"></p>
+    <script type = "text/javascript">
+        function sayHello(){
+            document.getElementById('text').innerHTML = "Hello"
+        }
+        sayHello()
+    </script>
+    <!-- <script>
+        function getArea(width, height){
+            area = width * height
+            console.log(area)
+        }
+        getArea(3, 5)
+        const width = 3
+        const height = 5
+    </script> -->
+    <h1> Interactive rectangle area calculator</h1>
+    <p>Enter height</p>
+    <input type="text" id="height">
+    <p>Enter width</p>
+    <input type="text" id="width">
+    <button onclick="doCalc()">Calculate</button>
+    <p id="area"></p>
+    <script>
+        // Calculate the area of a rectangle
+        function calRectangleArea(width, height){
+            let area = width * height
+            return area
+        }
+        // Process the input and display the result
+        function doCalc() {
+            let newWidth = document.getElementById('width').value
+            let newHeight = document.getElementById('height').value
+            let newArea = calRectangleArea(newWidth, newHeight)
+            document.getElementById('area').innerHTML += "The area is: " + newArea + "</br>"
+        }
+    </script>
+</body>
+</html>

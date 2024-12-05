@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="text"></p>
+    <script type = "text/javascript">
+        function sayHello(){
+            document.getElementById('text').innerHTML = "Hello"
+        }
+        sayHello()
+    </script>
+    <!-- <script>
+        function getArea(width, height){
+            area = width * height
+            console.log(area)
+        }
+        getArea(3, 5)
+        const width = 3
+        const height = 5
+    </script> -->
+    <h1> Interactive cuboid volume calculator</h1>
+    <p>Enter length:  <input type="text" id="length"></p>
+    <p>Enter height: <input type="text" id="height"></p>
+    <p>Enter width: <input type="text" id="width"></p><br>
+    <button onclick="doCalc()">Calculate</button>
+    <p id="volume"></p>
+    <script>
+        // Calculate the area of a rectangle
+        function calVolumeCuboid(length, width, height){
+            let volume = length * width * height
+            return volume
+        }
+        // Process the input and display the result
+        function doCalc() {
+            let newlength = document.getElementById('length').value
+            let newWidth = document.getElementById('width').value
+            let newHeight = document.getElementById('height').value
+            let newVolume = calVolumeCuboid(newlength, newWidth, newHeight)
+            document.getElementById('volume').innerHTML += "The volume of " + newlength + "*" + newWidth + "*" + newHeight + " is " + newVolume + "</br>"
+        }
+    </script>
+</body>
+</html>
